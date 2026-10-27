@@ -213,9 +213,7 @@
     }
     function target(e) {
       var w = win.offsetWidth, h = win.offsetHeight;
-      var x = e.clientX + 28;
-      if (x + w > window.innerWidth - 16) x = e.clientX - w - 28;
-      tx = x;
+      tx = clamp(e.clientX - w * 0.35, 16, window.innerWidth - w - 16);
       ty = clamp(e.clientY - h / 2, 16, window.innerHeight - h - 16);
       if (!moving) { moving = true; requestAnimationFrame(follow); }
     }

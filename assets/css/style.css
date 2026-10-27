@@ -421,7 +421,8 @@ p { margin: 0; }
 }
 
 /* ---------- Serviços ---------- */
-.services { padding-block: var(--section); background: var(--ultravioleta); }
+.services { position: relative; isolation: isolate; padding-block: var(--section); background: var(--ultravioleta); }
+.services .wrap { position: relative; z-index: 1; }
 .services__list {
   list-style: none;
   margin: 0;
@@ -451,7 +452,7 @@ p { margin: 0; }
   position: fixed;
   left: 0;
   top: 0;
-  z-index: 40;
+  z-index: 0;
   width: clamp(240px, 24vw, 400px);
   aspect-ratio: 16 / 10;
   border-radius: 4px;
@@ -462,7 +463,7 @@ p { margin: 0; }
   background: var(--breu);
   display: none;
 }
-.preview video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.preview video { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(0.72); }
 .preview.is-on { opacity: 1; }
 @media (hover: hover) and (pointer: fine) {
   .preview { display: block; }
