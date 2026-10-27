@@ -331,7 +331,6 @@ p { margin: 0; }
   font-variant-numeric: tabular-nums;
   transition: opacity 1s;
 }
-.readout b { font-weight: 600; color: var(--nevoa); }
 .readout__bar {
   height: 2px;
   background: var(--linha);
@@ -346,7 +345,6 @@ p { margin: 0; }
   clip-path: inset(0 calc((1 - var(--p, 1)) * 100%) 0 0);
 }
 .readout__row { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; }
-.readout__seed { margin-left: auto; }
 .readout.is-done { opacity: 0.55; }
 
 /* ---------- Manifesto ---------- */
@@ -782,7 +780,6 @@ p { margin: 0; }
 @media (max-width: 520px) {
   .wordmark { font-size: 1.25rem; }
   .pillars div { grid-template-columns: minmax(0, 1fr); }
-  .readout__seed { margin-left: 0; }
   .hero__actions .btn { flex: 1 1 auto; }
 }
 

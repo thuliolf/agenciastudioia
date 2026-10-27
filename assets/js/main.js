@@ -4,8 +4,8 @@
   /* Dados de contato: troque pelos reais antes de publicar.
      whatsapp no formato internacional, só números (ex.: 5583999999999). Vazio = usa e-mail. */
   var CONTATO = {
-    email: 'contato@latente.studio',
-    whatsapp: ''
+    email: 'trivocomercial@gmail.com',
+    whatsapp: '5583999806488'
   };
 
   var root = document.documentElement;
@@ -51,11 +51,7 @@
   var heroVideo = $('.hero__video');
   var readout = $('.readout');
   var fill = $('[data-readout-fill]');
-  var stepEl = $('[data-readout-step]');
   var statusEl = $('[data-readout-status]');
-  var seedEl = $('[data-readout-seed]');
-
-  if (seedEl) seedEl.textContent = String(Math.floor(1000000 + Math.random() * 8999999));
 
   var field = null;
   if (canvas && window.LatentField) {
@@ -66,7 +62,6 @@
   function setProgress(p) {
     if (field) field.setProgress(p);
     if (fill) fill.parentNode.style.setProperty('--p', p.toFixed(3));
-    if (stepEl) stepEl.textContent = Math.round(p * 50);
   }
 
   function finishIntro() {
