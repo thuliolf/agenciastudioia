@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Latente | Estúdio de vídeo com inteligência artificial</title>
+  <meta name="description" content="A Latente cria comerciais, filmes de marca e conteúdo para redes com inteligência artificial generativa e direção de cinema em cada quadro.">
+  <meta name="theme-color" content="#0A0722">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="Latente | Do ruído à imagem">
+  <meta property="og:description" content="Estúdio de vídeo com inteligência artificial generativa e direção de cinema em cada quadro.">
+  <meta property="og:image" content="og.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="preload" href="assets/fonts/anybody-var.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preload" href="assets/fonts/instrument-sans-var.woff" as="font" type="font/woff" crossorigin>
+  <link rel="preconnect" href="https://videos.pexels.com">
+  <link rel="preconnect" href="https://images.pexels.com">
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>
+    (function (d) {
+      var root = d.documentElement;
+      root.classList.add('js');
+      // Começa "latente" (letras comprimidas) só quando há movimento permitido.
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        root.classList.add('is-latent');
+        setTimeout(function () { root.classList.remove('is-latent'); }, 5000); // segurança caso o script principal falhe
+      }
+    })(document);
+  </script>
+</head>
+<body>
+  <a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="topbar" data-topbar>
+    <div class="topbar__inner">
+      <a class="brand" href="#topo" aria-label="Latente, voltar ao início">
+        <svg class="brand__symbol" viewBox="0 0 140 140" aria-hidden="true">
+          <defs>
+            <radialGradient id="seed-heat" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#FCFFA4"/><stop offset=".35" stop-color="#FCA50A"/><stop offset=".62" stop-color="#DD513A"/><stop offset=".85" stop-color="#932667"/><stop offset="1" stop-color="#420A68"/>
+            </radialGradient>
+          </defs>
+          <path fill="currentColor" d="M0 0h30v110h110v30H0z"/>
+          <circle class="brand__seed" cx="110" cy="30" r="30" fill="url(#seed-heat)"/>
+        </svg>
+        <span class="wordmark" aria-hidden="true"><span>L</span><span>A</span><span>T</span><span>E</span><span>N</span><span>T</span><span>E</span></span>
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-links" data-nav-toggle>Menu</button>
+        <ul class="nav__links" id="nav-links" data-nav-links>
+          <li><a href="#trabalhos">Explorações</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#processo">Processo</a></li>
+          <li><a href="#perguntas">Perguntas</a></li>
+          <li class="nav__cta"><a class="btn btn--hot" href="#contato">Pedir orçamento</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- HERO: vídeo + campo latente (WebGL) que "remove o ruído" ao carregar -->
+    <section class="hero" id="topo" aria-labelledby="hero-title">
+      <div class="hero__media" aria-hidden="true">
+        <video class="hero__video" autoplay muted loop playsinline preload="auto"
+               poster="https://images.pexels.com/videos/15432087/abstract-acrylic-art-artist-15432087.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1920">
+          <source media="(orientation: portrait)" src="https://videos.pexels.com/video-files/9669145/9669145-hd_720_1280_25fps.mp4" type="video/mp4">
+          <source media="(max-width: 1366px)" src="https://videos.pexels.com/video-files/15432087/15432087-hd_1280_720_50fps.mp4" type="video/mp4">
+          <source src="https://videos.pexels.com/video-files/15432087/15432087-hd_1920_1080_50fps.mp4" type="video/mp4">
+        </video>
+        <canvas class="hero__field" data-latent-field></canvas>
+        <div class="hero__scrim"></div>
+      </div>
+
+      <div class="hero__content">
+        <h1 class="hero__title" id="hero-title" data-hero-title>Do ruído <br>à imagem.</h1>
+        <div class="hero__aside">
+          <p class="hero__lead">A Latente cria comerciais, filmes de marca e conteúdo para redes com inteligência artificial generativa e direção de cinema em cada quadro.</p>
+          <div class="hero__actions">
+            <a class="btn btn--hot" href="#contato">Pedir orçamento</a>
+            <a class="btn btn--ghost" href="#trabalhos">Ver explorações</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="readout" aria-hidden="true">
+        <div class="readout__bar"><span data-readout-fill></span></div>
+        <div class="readout__row">
+          <span data-readout-status>Gerando quadro</span>
+          <span>passo <b data-readout-step>0</b> de 50</span>
+          <span class="readout__seed">semente <b data-readout-seed>4815162</b></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- MANIFESTO -->
+    <section class="manifesto" aria-labelledby="manifesto-title" data-manifesto>
+      <div class="wrap">
+        <h2 class="sr-only" id="manifesto-title">Manifesto</h2>
+        <p data-reveal-words>Todo vídeo gerado por inteligência artificial começa como ruído. São milhões de pontos aleatórios que, passo a passo, se organizam em imagem.</p>
+        <p data-reveal-words>A diferença entre ruído e cinema é direção. Saber o que pedir, o que descartar e quando um quadro está pronto.</p>
+        <p data-reveal-words>A Latente une modelos generativos de ponta a roteiro, direção de arte e finalização profissional. O resultado são filmes que antes exigiam set, equipe e semanas de produção.</p>
+      </div>
+    </section>
+
+    <!-- EXPLORAÇÕES -->
+    <section class="works" id="trabalhos" aria-labelledby="works-title">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="works-title">Explorações</h2>
+          <p>Estudos de linguagem que mostram o que dá para gerar hoje. Cada um testa um formato que produzimos para marcas.</p>
+        </header>
+
+        <div class="works__grid">
+          <figure class="work work--a" data-work>
+            <div class="work__frame">
+              <video muted loop playsinline preload="none"
+                     poster="https://images.pexels.com/videos/7170775/pexels-photo-7170775.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600"
+                     data-src="https://videos.pexels.com/video-files/7170775/7170775-hd_2048_1080_25fps.mp4"></video>
+            </div>
+            <figcaption><span class="work__title">Órbita</span><span class="work__meta">Filme de marca</span><span class="work__time">0:21</span></figcaption>
+          </figure>
+
+          <figure class="work work--b" data-work>
+            <div class="work__frame">
+              <video muted loop playsinline preload="none"
+                     poster="https://images.pexels.com/videos/6944499/cyberpunk-neon-neon-art-neon-lights-6944499.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"
+                     data-src="https://videos.pexels.com/video-files/6944499/6944499-hd_1280_720_25fps.mp4"></video>
+            </div>
+            <figcaption><span class="work__title">Neon</span><span class="work__meta">Editorial de moda</span><span class="work__time">0:07</span></figcaption>
+          </figure>
+
+          <figure class="work work--c" data-work>
+            <div class="work__frame">
+              <video muted loop playsinline preload="none"
+                     poster="https://images.pexels.com/videos/29498801/ferrari-f50-1995-wheel-spinnng-29498801.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"
+                     data-src="https://videos.pexels.com/video-files/29498801/12698137_1356_720_24fps.mp4"></video>
+            </div>
+            <figcaption><span class="work__title">Rubro</span><span class="work__meta">Comercial automotivo</span><span class="work__time">0:10</span></figcaption>
+          </figure>
+
+          <figure class="work work--d" data-work>
+            <div class="work__frame">
+              <video muted loop playsinline preload="none"
+                     poster="https://images.pexels.com/videos/7815751/background-black-bottle-bright-7815751.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600"
+                     data-src="https://videos.pexels.com/video-files/7815751/7815751-hd_1920_1080_25fps.mp4"></video>
+            </div>
+            <figcaption><span class="work__title">Orvalho</span><span class="work__meta">Filme de produto</span><span class="work__time">0:24</span></figcaption>
+          </figure>
+
+          <figure class="work work--e" data-work>
+            <div class="work__frame">
+              <video muted loop playsinline preload="none"
+                     poster="https://images.pexels.com/videos/26607095/pexels-photo-26607095.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1200"
+                     data-src="https://videos.pexels.com/video-files/26607095/11972080_1280_720_30fps.mp4"></video>
+            </div>
+            <figcaption><span class="work__title">Palco</span><span class="work__meta">Videoclipe</span><span class="work__time">0:10</span></figcaption>
+          </figure>
+
+          <figure class="work work--f" data-work>
+            <div class="work__frame">
+              <video muted loop playsinline preload="none"
+                     poster="https://images.pexels.com/videos/28615173/science-fiction-28615173.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1600"
+                     data-src="https://videos.pexels.com/video-files/28615173/12433544_1920_1080_25fps.mp4"></video>
+            </div>
+            <figcaption><span class="work__title">Metrópole</span><span class="work__meta">Construção de mundo</span><span class="work__time">0:41</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section class="services" id="servicos" aria-labelledby="services-title">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="services-title">O que a gente produz</h2>
+          <p>Do comercial de 15 segundos ao filme de marca, com o mesmo cuidado de roteiro, arte e som.</p>
+        </header>
+
+        <ul class="services__list" data-services>
+          <li class="service" data-preview="https://videos.pexels.com/video-files/29498801/12698136_1018_540_24fps.mp4">
+            <h3>Comerciais e campanhas</h3>
+            <p>Filmes de 15 a 60 segundos para TV, digital e redes, com produto, cenário e elenco gerados ou integrados ao material que você já tem.</p>
+          </li>
+          <li class="service" data-preview="https://videos.pexels.com/video-files/7170785/7170785-sd_960_506_25fps.mp4">
+            <h3>Filmes de marca e manifestos</h3>
+            <p>Narrativas mais longas, com personagens consistentes, direção de arte própria e trilha original.</p>
+          </li>
+          <li class="service" data-preview="https://videos.pexels.com/video-files/7315684/7315684-sd_960_540_25fps.mp4">
+            <h3>Conteúdo para redes em escala</h3>
+            <p>Dezenas de variações por mês em 9:16, 1:1 e 16:9, adaptadas a cada canal e a cada público.</p>
+          </li>
+          <li class="service" data-preview="https://videos.pexels.com/video-files/6944412/6944412-sd_960_540_25fps.mp4">
+            <h3>Apresentadores e avatares digitais</h3>
+            <p>Porta-vozes virtuais para treinamentos, lançamentos e atendimento, com voz clonada somente sob autorização.</p>
+          </li>
+          <li class="service" data-preview="https://videos.pexels.com/video-files/28794990/12479098_960_540_24fps.mp4">
+            <h3>Videoclipes e visualizers</h3>
+            <p>Universos visuais para artistas e selos, do lyric video ao clipe completo.</p>
+          </li>
+          <li class="service" data-preview="https://videos.pexels.com/video-files/8058593/8058593-sd_960_540_25fps.mp4">
+            <h3>Dublagem e localização</h3>
+            <p>O mesmo vídeo em outros idiomas, com sincronia labial e a voz do apresentador original.</p>
+          </li>
+        </ul>
+      </div>
+      <div class="preview" aria-hidden="true" data-preview-window>
+        <video muted loop playsinline preload="none"></video>
+      </div>
+    </section>
+
+    <!-- DIREÇÃO HUMANA -->
+    <section class="direction" aria-labelledby="direction-title">
+      <div class="wrap direction__grid">
+        <div class="direction__photo">
+          <img src="https://images.pexels.com/photos/11063292/pexels-photo-11063292.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400"
+               srcset="https://images.pexels.com/photos/11063292/pexels-photo-11063292.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=800 800w,
+                       https://images.pexels.com/photos/11063292/pexels-photo-11063292.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=1400 1400w,
+                       https://images.pexels.com/photos/11063292/pexels-photo-11063292.jpeg?auto=compress&amp;cs=tinysrgb&amp;w=2200 2200w"
+               sizes="(min-width: 900px) 50vw, 100vw"
+               alt="Editor trabalhando em uma ilha de edição iluminada por luz vermelha, com várias telas à frente"
+               loading="lazy" width="1400" height="933">
+        </div>
+        <div class="direction__text">
+          <h2 id="direction-title">Modelos geram. Pessoas dirigem.</h2>
+          <p>Cada projeto tem um diretor responsável do briefing à entrega. Os modelos produzem centenas de possibilidades para cada cena, e a equipe escolhe, corrige e monta só o que serve à história.</p>
+          <dl class="pillars">
+            <div><dt>Consistência</dt><dd>Personagens, produtos e marcas idênticos de uma cena para a outra.</dd></div>
+            <div><dt>Acabamento</dt><dd>Correção de cor, desenho de som, trilha e entrega em até 4K.</dd></div>
+            <div><dt>Responsabilidade</dt><dd>Imagem e voz de pessoas reais só com autorização por escrito, e direitos de uso definidos em contrato.</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESSO -->
+    <section class="process" id="processo" aria-labelledby="process-title" data-process>
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="process-title">Do briefing ao arquivo final</h2>
+          <p>Cinco etapas, com a sua aprovação antes de cada avanço.</p>
+        </header>
+        <div class="process__ramp" aria-hidden="true"><span></span></div>
+        <ol class="process__steps">
+          <li style="--t:0"><span class="process__n">01</span><h3>Briefing</h3><p>Uma conversa para entender objetivo, público, canais e prazo.</p></li>
+          <li style="--t:1"><span class="process__n">02</span><h3>Roteiro e direção de arte</h3><p>Roteiro, referências e quadros-chave gerados para você aprovar o visual antes do vídeo.</p></li>
+          <li style="--t:2"><span class="process__n">03</span><h3>Geração</h3><p>Produção das cenas com modelos de vídeo, imagem e voz, em centenas de iterações.</p></li>
+          <li style="--t:3"><span class="process__n">04</span><h3>Curadoria e montagem</h3><p>Seleção dos melhores takes, montagem, ajustes de continuidade e efeitos.</p></li>
+          <li style="--t:4"><span class="process__n">05</span><h3>Finalização e entrega</h3><p>Cor, trilha, mixagem e versões em todos os formatos de que você precisar.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- COMPARAÇÃO -->
+    <section class="compare" aria-labelledby="compare-title">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="compare-title">O que muda em relação à produção tradicional</h2>
+        </header>
+        <div class="compare__scroll">
+          <table class="compare__table">
+            <thead>
+              <tr><th scope="col"><span class="sr-only">Etapa</span></th><th scope="col">Produção tradicional</th><th scope="col">Latente</th></tr>
+            </thead>
+            <tbody>
+              <tr><th scope="row">Locação e cenário</th><td>Aluguel, montagem e deslocamento</td><td>Criados para cada cena, sem limite físico</td></tr>
+              <tr><th scope="row">Elenco</th><td>Cachês, agendas e diárias</td><td>Personagens originais ou avatares autorizados</td></tr>
+              <tr><th scope="row">Ajustes depois da filmagem</th><td>Exigem uma nova diária de gravação</td><td>Uma nova geração da cena</td></tr>
+              <tr><th scope="row">Versões por canal</th><td>Reedição para cada formato</td><td>16:9, 9:16 e 1:1 planejados desde o roteiro</td></tr>
+              <tr><th scope="row">Prazo típico</th><td>Semanas</td><td>Dias</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- PERGUNTAS -->
+    <section class="faq" id="perguntas" aria-labelledby="faq-title">
+      <div class="wrap faq__grid">
+        <h2 id="faq-title">Perguntas frequentes</h2>
+        <div class="faq__list">
+          <details>
+            <summary>Quem fica com os direitos do vídeo?</summary>
+            <p>A sua empresa. O contrato define os direitos de uso do material final, com os canais, territórios e prazos combinados.</p>
+          </details>
+          <details>
+            <summary>Vocês usam a imagem ou a voz de pessoas reais?</summary>
+            <p>Só com autorização por escrito da própria pessoa. Sem essa autorização, criamos personagens e vozes originais.</p>
+          </details>
+          <details>
+            <summary>O meu produto e os personagens ficam iguais em todas as cenas?</summary>
+            <p>Sim. Preparamos referências do produto, da marca e dos personagens para manter forma, cor e proporção de uma cena para a outra.</p>
+          </details>
+          <details>
+            <summary>Quanto tempo leva um projeto?</summary>
+            <p>Depende do formato e da quantidade de versões. O cronograma vem fechado na proposta, com a data de cada aprovação.</p>
+          </details>
+          <details>
+            <summary>Quais ferramentas vocês usam?</summary>
+            <p>Escolhemos o modelo mais adequado para cada cena entre as principais plataformas de vídeo, imagem e voz generativas, e finalizamos em softwares profissionais de edição, cor e som.</p>
+          </details>
+          <details>
+            <summary>Em quais formatos vocês entregam?</summary>
+            <p>MP4 ou MOV em até 4K, nas proporções 16:9, 9:16, 1:1 e 4:5, com legendas e versões sem texto quando necessário.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="contact" id="contato" aria-labelledby="contact-title">
+      <div class="contact__seed" aria-hidden="true"></div>
+      <div class="wrap contact__grid">
+        <div class="contact__intro">
+          <h2 id="contact-title">Qual vídeo ainda não existe?</h2>
+          <p>Conte a ideia em poucas linhas. Respondemos com perguntas, referências e uma proposta com prazo e valor.</p>
+          <p class="contact__direct">Se preferir, escreva para <span class="contact__email" data-contact-email>contato@latente.studio</span></p>
+        </div>
+
+        <form class="form" data-contact-form novalidate>
+          <div class="form__row">
+            <label for="f-nome">Nome</label>
+            <input id="f-nome" name="nome" type="text" autocomplete="name" required>
+          </div>
+          <div class="form__row">
+            <label for="f-empresa">Empresa</label>
+            <input id="f-empresa" name="empresa" type="text" autocomplete="organization">
+          </div>
+          <div class="form__row">
+            <label for="f-email">E-mail</label>
+            <input id="f-email" name="email" type="email" autocomplete="email" required>
+          </div>
+          <fieldset class="form__row form__chips">
+            <legend>Formato</legend>
+            <input type="radio" id="f-t1" name="formato" value="Comercial" checked><label for="f-t1">Comercial</label>
+            <input type="radio" id="f-t2" name="formato" value="Filme de marca"><label for="f-t2">Filme de marca</label>
+            <input type="radio" id="f-t3" name="formato" value="Conteúdo para redes"><label for="f-t3">Redes sociais</label>
+            <input type="radio" id="f-t4" name="formato" value="Avatar digital"><label for="f-t4">Avatar digital</label>
+            <input type="radio" id="f-t5" name="formato" value="Videoclipe"><label for="f-t5">Videoclipe</label>
+            <input type="radio" id="f-t6" name="formato" value="Outro"><label for="f-t6">Outro</label>
+          </fieldset>
+          <div class="form__row">
+            <label for="f-msg">Ideia</label>
+            <textarea id="f-msg" name="mensagem" rows="4" required placeholder="O que você quer mostrar, para quem e onde o vídeo vai passar."></textarea>
+          </div>
+          <div class="form__foot">
+            <button class="btn btn--hot" type="submit">Enviar mensagem</button>
+            <p class="form__status" role="status" data-form-status></p>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <img class="footer__mark" src="assets/brand/latente-logotipo.svg" alt="Latente" width="1000" height="143" loading="lazy">
+      <div class="footer__row">
+        <p>© 2026 Latente Estúdio</p>
+        <p>Vídeos e fotos de demonstração: <a href="https://www.pexels.com" rel="noopener" target="_blank">Pexels</a></p>
+        <a href="#topo">Voltar ao topo</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/latent-field.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
