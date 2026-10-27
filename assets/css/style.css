@@ -759,8 +759,8 @@ p { margin: 0; }
   .section-head,
   .compare .section-head { grid-template-columns: minmax(0, 1fr); }
 
-  .works__grid { gap: 2.5rem; }
-  .work--a, .work--b, .work--c, .work--d, .work--e, .work--f { grid-column: 1 / -1; }
+  .works__grid { grid-template-columns: minmax(0, 1fr); row-gap: 2.5rem; }
+  .work--a, .work--b, .work--c, .work--d, .work--e, .work--f { grid-column: auto; }
   .work--f { --ar: 16 / 9; }
 
   .service { grid-template-columns: minmax(0, 1fr); }
