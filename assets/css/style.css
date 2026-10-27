@@ -528,10 +528,11 @@ p { margin: 0; }
   align-content: start;
   transition: opacity 0.5s;
 }
-.process__steps li:nth-child(1) { --c: #6A176E; }
-.process__steps li:nth-child(2) { --c: #932667; }
-.process__steps li:nth-child(3) { --c: #DD513A; }
-.process__steps li:nth-child(4) { --c: #FCA50A; }
+/* Rampa inferno a partir de t=0.5, para que todo número tenha contraste ≥ 3:1 sobre o breu. */
+.process__steps li:nth-child(1) { --c: #BC3754; }
+.process__steps li:nth-child(2) { --c: #DD513A; }
+.process__steps li:nth-child(3) { --c: #F37819; }
+.process__steps li:nth-child(4) { --c: #FCAE12; }
 .process__steps li:nth-child(5) { --c: #FCFFA4; }
 .process__n {
   font-family: var(--font-display);
