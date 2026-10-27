@@ -581,6 +581,8 @@ p { margin: 0; }
   gap: 2rem 4rem;
   align-items: start;
 }
+.faq__grid h2,
+.direction__text h2 { font-size: clamp(2.25rem, 4vw, 4rem); }
 .faq__list { border-top: 1px solid var(--linha); }
 .faq details { border-bottom: 1px solid var(--linha); }
 .faq summary {
