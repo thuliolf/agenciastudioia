@@ -12,6 +12,7 @@ assets/js/main.js           abertura, rolagem, vídeos, prévia dos serviços, f
 assets/fonts/               Anybody e Instrument Sans (variáveis, licença OFL)
 assets/brand/               logotipo, símbolo e assinatura em SVG (versões clara e escura)
 favicon.svg, apple-touch-icon.png, og.png
+docs/                       documentação da marca (PDF do conceito criativo)
 ```
 
 ## Publicar no GitHub Pages
@@ -40,3 +41,5 @@ Para usar um domínio próprio, informe-o no mesmo painel e crie o registro DNS 
 | Névoa | `#F1EEF8` | texto |
 
 A rampa de calor segue o mapa de cores *inferno*, usado em visualizações de modelos de IA, e só aparece para indicar progresso ou estado. O logotipo usa a Anybody com cada letra em uma largura do eixo `wdth` (50 a 150): a palavra interpola como um ponto no espaço latente.
+
+O conceito completo (a ideia "do ruído à imagem", o nome, o logo, as cores, a tipografia, o movimento, o site seção por seção e a voz da marca) está em [`docs/latente-conceito-criativo.pdf`](docs/latente-conceito-criativo.pdf).
