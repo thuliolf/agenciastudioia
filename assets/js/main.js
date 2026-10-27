@@ -5,7 +5,7 @@
      whatsapp no formato internacional, só números (ex.: 5583999999999). Vazio = usa e-mail. */
   var CONTATO = {
     email: 'trivocomercial@gmail.com',
-    whatsapp: '5583999806488'
+    whatsapp: '5583991896802'
   };
 
   var root = document.documentElement;
@@ -51,7 +51,6 @@
   var heroVideo = $('.hero__video');
   var readout = $('.readout');
   var fill = $('[data-readout-fill]');
-  var statusEl = $('[data-readout-status]');
 
   var field = null;
   if (canvas && window.LatentField) {
@@ -67,7 +66,6 @@
   function finishIntro() {
     setProgress(1);
     root.classList.remove('is-latent');
-    if (statusEl) statusEl.textContent = 'Quadro pronto';
     if (readout) readout.classList.add('is-done');
   }
 

@@ -336,7 +336,6 @@ p { margin: 0; }
   background: var(--linha);
   border-radius: 2px;
   overflow: hidden;
-  margin-bottom: 0.75rem;
 }
 .readout__bar span {
   display: block;
@@ -344,7 +343,6 @@ p { margin: 0; }
   background: var(--ramp);
   clip-path: inset(0 calc((1 - var(--p, 1)) * 100%) 0 0);
 }
-.readout__row { display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; }
 .readout.is-done { opacity: 0.55; }
 
 /* ---------- Manifesto ---------- */
